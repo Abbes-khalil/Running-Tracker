@@ -4,12 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Fit Tracker</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
-    <script src="scripts/firebase-config.js"></script>
+    <link rel="stylesheet" href="/style.css">
+    <script type="module" src="/scripts/firebase-config.js"></script>
 </head>
 <body>
     <nav id="navbar">
@@ -22,7 +18,7 @@
         </ul>
     </nav>
 
-    <button id="toggleBtn" onclick="toggleMenu()">☰</button>
+    <button id="toggleBtn">☰</button>
 
     <div class="content-wrapper">
         <main>
@@ -60,11 +56,11 @@
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                     <div class="form-group">
                         <label for="distance">Distance (km)</label>
-                        <input id="distance" name="distance" type="number" placeholder="0.00" onchange="speedcal()">
+                        <input id="distance" name="distance" type="number" placeholder="0.00">
                     </div>
                     <div class="form-group">
                         <label for="time">Time (min)</label>
-                        <input id="time" name="time" type="number" placeholder="0" onchange="speedcal()">
+                        <input id="time" name="time" type="number" placeholder="0">
                     </div>
                 </div>
                 <div class="form-group" style="text-align: center; margin-bottom: 24px;">
@@ -76,6 +72,6 @@
         </main>
     </div>
 
-    <script src="scripts/functions.js"></script>
+    <script type="module" src="/scripts/functions.js"></script>
 </body>
 </html>

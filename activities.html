@@ -4,12 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activities - Fit Tracker</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
-    <script src="scripts/firebase-config.js"></script>
+    <link rel="stylesheet" href="/style.css">
+    <script type="module" src="/scripts/firebase-config.js"></script>
 </head>
 <body class="page">
     <nav id="navbar">
@@ -22,7 +18,7 @@
         </ul>
     </nav>
 
-    <button id="toggleBtn" onclick="toggleMenu()">☰</button>
+    <button id="toggleBtn">☰</button>
 
     <div class="content-wrapper">
         <div class="page-header">
@@ -91,6 +87,6 @@
         </div>
     </div>
 
-    <script src="scripts/functions.js"></script>
+    <script type="module" src="/scripts/functions.js"></script>
 </body>
 </html>
