@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Activity - Fit Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+    <script src="scripts/firebase-config.js"></script>
+</head>
+<body class="page">
+    <nav id="navbar">
+        <h1>Fit Tracker</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="activities.html">Activities</a></li>
+            <li><a href="pr.html">Personal record</a></li>
+        </ul>
+    </nav>
+
+    <button id="toggleBtn" onclick="toggleMenu()">☰</button>
+
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h1>Add Manual Activity</h1>
+            <a href="activities.html" class="btn btn-secondary" style="text-decoration: none;">Back to Activities</a>
+        </div>
+
+        <div class="action-card">
+            <form action="" style="width: 100%;">
+                <div class="form-group">
+                    <label for="activity">Activity Name</label>
+                    <input type="text" id="activity" name="activity" value="Running">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" name="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Time</label>
+                        <input type="time" id="time" name="time">
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group">
+                        <label for="distance">Distance (km)</label>
+                        <input type="number" id="distance" name="distance" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">Duration (hh:mm:ss)</label>
+                        <input type="time" id="duration" name="duration" step="1">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="avg-speed">Average Speed (km/h)</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span id="avg-speed" class="stat-value" style="font-size: 20px;">--</span>
+                        <span class="stat-unit">km/h</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="calories">Calories Burned</label>
+                    <input type="number" id="calories" name="calories" step="1">
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" name="notes" rows="4" placeholder="How did the run feel?"></textarea>
+                </div>
+
+                <div style="display: flex; gap: 12px; margin-top: 32px;">
+                    <button type="submit" class="btn btn-primary" style="flex: 1;" >Save Activity</button>
+                    <button type="reset" class="btn btn-secondary">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts/functions.js"></script>
+</body>
+</html>

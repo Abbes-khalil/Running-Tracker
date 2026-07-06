@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Records - Fit Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+    <script src="scripts/firebase-config.js"></script>
+</head>
+<body class="page">
+    <nav id="navbar">
+        <h1>Fit Tracker</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="activities.html">Activities</a></li>
+            <li><a href="pr.html" class="active">Personal record</a></li>
+        </ul>
+    </nav>
+    <button id="toggleBtn" onclick="toggleMenu()">☰</button>
+    <div class="pr-container">
+        <div class="pr-card">
+            <div class="pr-label">Distance</div>
+            <div class="pr-value">--</div>
+        </div>
+        <div class="pr-card">
+            <div class="pr-label">Duration</div>
+            <div class="pr-value">--</div>
+        </div>
+        <div class="pr-card">
+            <div class="pr-label">AVG Pace</div>
+            <div class="pr-value">--</div>
+        </div>
+    </div>
+    
+    <script src="scripts/functions.js"></script>
+</body>
+</html>
