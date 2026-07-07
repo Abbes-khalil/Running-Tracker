@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Running Tracker</title>
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/auth.css">
+</head>
+<body>
+    <nav id="navbar">
+        <h1>Running Tracker</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="activities.html" class="active">Activities</a></li>
+            <li><a href="pr.html">Personal record</a></li>
+        </ul>
+    </nav>
+
+    <button id="toggleBtn">☰</button>
+    <form id="loginForm" class="login-form">
+        <h2>Login</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Login</button>
+        <button type="button" id="registerBtn" onclick="window.location.href='register.html'">Register</button>
+    </form>
+</body>
+</html>

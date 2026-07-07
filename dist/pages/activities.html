@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities - Fit Tracker</title>
+  <script type="module" crossorigin src="/assets/functions-C6ajgOFp.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/activities-BtM-bY1o.css">
+  <link rel="stylesheet" crossorigin href="/assets/base-B3LGHump.css">
+</head>
+<body class="page">
+    <nav id="navbar">
+        <h1>Fit Tracker</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="activities.html" class="active">Activities</a></li>
+            <li><a href="pr.html">Personal record</a></li>
+        </ul>
+    </nav>
+
+    <button id="toggleBtn">☰</button>
+
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h1>Activities</h1>
+            <div class="header-links">
+                <a href="addMenu.html" class="btn btn-primary" style="text-decoration: none; padding: 8px 16px; font-size: 14px;">+ Manual Activity</a>
+                <a href="#" class="btn btn-secondary" style="text-decoration: none; padding: 8px 16px; font-size: 14px; margin-left: 8px;">Export CSV</a>
+            </div>
+        </div>
+
+        <div class="activities-toolbar">
+            <input type="text" class="search-input" placeholder="Search activities...">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Running</button>
+        </div>
+
+        <div class="activity-list">
+            <div class="activity-card">
+                <div class="card-date">Jul 5, 2026</div>
+                <div class="card-title">Morning Run</div>
+                <div class="card-metric">
+                    <span class="metric-label">Distance</span>
+                    <span class="metric-value">5.20 km</span>
+                </div>
+                <div class="card-metric">
+                    <span class="metric-label">Duration</span>
+                    <span class="metric-value">28:15</span>
+                </div>
+                <div class="card-metric">
+                    <span class="metric-label">Avg Pace</span>
+                    <span class="metric-value">5:24 /km</span>
+                </div>
+            </div>
+            <div class="activity-card">
+                <div class="card-date">Jul 3, 2026</div>
+                <div class="card-title">Weekend Long Run</div>
+                <div class="card-metric">
+                    <span class="metric-label">Distance</span>
+                    <span class="metric-value">12.00 km</span>
+                </div>
+                <div class="card-metric">
+                    <span class="metric-label">Duration</span>
+                    <span class="metric-value">1:05:10</span>
+                </div>
+                <div class="card-metric">
+                    <span class="metric-label">Avg Pace</span>
+                    <span class="metric-value">5:26 /km</span>
+                </div>
+            </div>
+            <div class="activity-card">
+                <div class="card-date">Jul 1, 2026</div>
+                <div class="card-title">Recovery Jog</div>
+                <div class="card-metric">
+                    <span class="metric-label">Distance</span>
+                    <span class="metric-value">3.50 km</span>
+                </div>
+                <div class="card-metric">
+                    <span class="metric-label">Duration</span>
+                    <span class="metric-value">21:00</span>
+                </div>
+                <div class="card-metric">
+                    <span class="metric-label">Avg Pace</span>
+                    <span class="metric-value">6:00 /km</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
