@@ -3,75 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Fit Tracker</title>
+    <title>Running Tracker</title>
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/home.css">
 </head>
 <body>
-    <nav id="navbar">
-        <h1>Fit Tracker</h1>
-        <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="calendar.html">Calendar</a></li>
-            <li><a href="activities.html">Activities</a></li>
-            <li><a href="pr.html">Personal record</a></li>
-        </ul>
-    </nav>
-
-    <button id="toggleBtn">☰</button>
-
-    <div class="content-wrapper">
-        <main>
-            <div class="page-header">
-                <h1>Welcome back, Runner</h1>
-            </div>
-
-            <!-- Summary Dashboard -->
-            <div class="dashboard-grid">
-                <div class="stat-card">
-                    <span class="stat-label">This Week</span>
-                    <div class="stat-value">24.5<span class="stat-unit">km</span></div>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-label">Avg Pace</span>
-                    <div class="stat-value">5:30<span class="stat-unit">/km</span></div>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-label">Total Runs</span>
-                    <div class="stat-value">12</div>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-label">Calories</span>
-                    <div class="stat-value">4,200<span class="stat-unit">kcal</span></div>
-                </div>
-            </div>
-
-            <!-- Quick Add Section -->
-            <div class="action-card">
-                <h3>Quick Add Run</h3>
-                <div class="form-group">
-                    <label for="name">Run Name</label>
-                    <input id="name" name="name" type="text" placeholder="Morning Jog">
-                </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <div class="form-group">
-                        <label for="distance">Distance (km)</label>
-                        <input id="distance" name="distance" type="number" placeholder="0.00">
-                    </div>
-                    <div class="form-group">
-                        <label for="time">Time (min)</label>
-                        <input id="time" name="time" type="number" placeholder="0">
-                    </div>
-                </div>
-                <div class="form-group" style="text-align: center; margin-bottom: 24px;">
-                    <span class="stat-label">Estimated Speed</span>
-                    <span id="speed" class="stat-value" style="font-size: 24px;">0.0</span> <span class="stat-unit">km/h</span>
-                </div>
-                <button class="btn btn-primary" style="width: 100%;">ADD ACTIVITY</button>
-            </div>
-        </main>
+    <div id="redirecting">
+        <p>Redirecting to login page...</p>
     </div>
-
-    <script type="module" src="./assets/js/functions.js"></script>
+    <script>
+        // Redirect to login page
+        window.location.href = "pages/login.html";
+    </script>
 </body>
 </html>

@@ -3,6 +3,14 @@ import { resolve } from 'path';
 
 export default defineConfig({
   root: resolve(__dirname, 'frontend'),
+  server: {
+    proxy: {
+      '/auth': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+      },
+    },
+  },
   build: {
     outDir: resolve(__dirname, 'dist'),
     rollupOptions: {

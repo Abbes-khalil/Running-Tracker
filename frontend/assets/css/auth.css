@@ -34,7 +34,7 @@ body.auth-page {
 }
 
 .auth-form button {
-    width: 100%;
+    width:100%;
     margin-top: 8px;
 }
 
@@ -49,3 +49,14 @@ body.auth-page {
     text-decoration: none;
     font-weight: 600;
 }
+
+.auth-form #login{
+    margin-right: 5px ;
+}
+
+.auth-form #register{
+    margin-right: 5px ;
+}
+
+
+
