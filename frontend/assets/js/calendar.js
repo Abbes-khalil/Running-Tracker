@@ -1,79 +1,44 @@
+import { escapeHtml, runsApi, setStatus } from './api.js';
+
 let currentDate = new Date();
+let runs = [];
+const grid = document.querySelector('#calendar-grid');
+const title = document.querySelector('#current-month');
+const status = document.querySelector('#page-status');
 
-export function renderCalendar() {
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth();
-
-    // Update header
-    const monthYear = currentDate.toLocaleString('default', { month: 'long', year: 'numeric' });
-    const monthEl = document.getElementById('currentMonth');
-    if (monthEl) monthEl.textContent = monthYear;
-
-    // Clear grid
-    const grid = document.getElementById('calendarGrid');
-    if (!grid) return;
-    grid.innerHTML = '';
-
-    // Get first day of month and number of days
-    const firstDay = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-    // Add empty cells for days before month starts
-    for (let i = 0; i < firstDay; i++) {
-        const emptyCell = document.createElement('div');
-        emptyCell.className = 'calendar-day empty';
-        grid.appendChild(emptyCell);
-    }
-
-    // Add days of month
-    for (let day = 1; day <= daysInMonth; day++) {
-        const dayCell = document.createElement('div');
-        dayCell.className = 'calendar-day';
-
-        // Highlight today
-        const today = new Date();
-        if (day === today.getDate() &&
-            month === today.getMonth() &&
-            year === today.getFullYear()) {
-            dayCell.classList.add('today');
-        }
-
-        dayCell.textContent = day;
-        dayCell.style.cursor = 'pointer';
-        dayCell.onclick = () => selectDay(day, month, year, dayCell);
-
-        grid.appendChild(dayCell);
-    }
+function renderCalendar() {
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
+  title.textContent = new Intl.DateTimeFormat('en', { month: 'long', year: 'numeric' }).format(currentDate);
+  const firstDay = new Date(year, month, 1).getDay();
+  const days = new Date(year, month + 1, 0).getDate();
+  const cells = [];
+  for (let i = 0; i < firstDay; i += 1) cells.push('<div class="calendar-cell muted" aria-hidden="true"></div>');
+  for (let day = 1; day <= days; day += 1) {
+    const key = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    const dayRuns = runs.filter((run) => run.run_date === key);
+    const isToday = new Date().toDateString() === new Date(year, month, day).toDateString();
+    cells.push(`<div class="calendar-cell${isToday ? ' today' : ''}">
+      <span class="day-number">${day}</span>
+      ${dayRuns.map((run) => `<a href="./activities.html" class="calendar-run"><strong>${escapeHtml(run.run_type)}</strong><span>${Number(run.distance_km).toFixed(1)} km</span></a>`).join('')}
+    </div>`);
+  }
+  grid.innerHTML = cells.join('');
 }
 
-export function previousMonth() {
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    renderCalendar();
-}
-
-export function nextMonth() {
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    renderCalendar();
-}
-
-function selectDay(day, month, year, element) {
-    // Remove previous selection
-    document.querySelectorAll('.calendar-day.selected').forEach(el => {
-        el.classList.remove('selected');
-    });
-
-    // Add selection to clicked day
-    element.classList.add('selected');
-    console.log(`Selected: ${day}/${month + 1}/${year}`);
-}
-
-// Initialize calendar and event listeners
-document.addEventListener('DOMContentLoaded', () => {
-    renderCalendar();
-
-    const prevBtn = document.querySelector('.calendar-nav-btn:first-of-type'); // Find prev button
-    const nextBtn = document.querySelectorAll('.calendar-nav-btn')[1]; // Find next button
-
-    if (prevBtn) prevBtn.addEventListener('click', previousMonth);
-    if (nextBtn) nextBtn.addEventListener('click', nextMonth);
+document.querySelector('#previous-month').addEventListener('click', () => {
+  currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1);
+  renderCalendar();
 });
+document.querySelector('#next-month').addEventListener('click', () => {
+  currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
+  renderCalendar();
+});
+
+try {
+  runs = await runsApi.list();
+  renderCalendar();
+} catch (error) {
+  setStatus(status, error.message, 'error');
+  renderCalendar();
+}

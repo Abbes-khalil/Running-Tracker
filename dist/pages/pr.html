@@ -1,29 +1,29 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Records | RunTracker</title>
-      <link rel="stylesheet" crossorigin href="/assets/base-CwhefAO1.css">
-    </head><body class="min-h-screen bg-[#050505] font-sans text-white">
-        <nav class="border-b border-[#262626] bg-black">
-      <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-4">
-        <a href="index.html" class="font-display text-xl font-bold uppercase text-[#ccff00]">RunTracker</a>
-        <div class="flex flex-wrap gap-2 text-sm font-medium">
-          <a href="../index.html" class="rounded-md bg-[#1a1a1a] px-3 py-2 text-[#ccff00]">Dashboard</a>
-          <a href="activities.html" class="rounded-md px-3 py-2 text-[#a0a0a0] hover:bg-[#1a1a1a] hover:text-white">Activities</a>
-          <a href="calendar.html" class="rounded-md px-3 py-2 text-[#a0a0a0] hover:bg-[#1a1a1a] hover:text-white">Calendar</a>
-          <a href="pr.html" class="rounded-md px-3 py-2 text-[#a0a0a0] hover:bg-[#1a1a1a] hover:text-white">Records</a>
-        </div>
-      </div>
-    </nav>
-            <main class="mx-auto max-w-5xl p-6">
-                    <h1 class="mb-8 font-display text-4xl font-bold">Personal Records</h1>
-                    <div class="grid gap-6 sm:grid-cols-3">
-                        <div class="rounded-2xl border border-[#262626] bg-[#121212] p-6 text-center">Distance: --</div>
-                        <div class="rounded-2xl border border-[#262626] bg-[#121212] p-6 text-center">Duration: --</div>
-                        <div class="rounded-2xl border border-[#262626] bg-[#121212] p-6 text-center">Average Pace: --</div>
-                    </div>
-                </main>
-            </body>
-            </html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Records | RunTracker</title>
+  <script type="module" crossorigin src="/assets/pr-BfiAuz52.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/base-BawtSieG.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><span class="brand-mark">R</span><span>RunTracker</span></a>
+    <nav class="main-nav" aria-label="Main navigation"><a href="../index.html">Dashboard</a><a href="./activities.html">Activities</a><a href="./calendar.html">Calendar</a><a class="active" href="./pr.html">Records</a></nav>
+    <a class="button button-primary" href="./addMenu.html">+ Add run</a>
+  </header>
+
+  <main class="page-shell">
+    <section class="records-hero"><p class="eyebrow">Personal bests</p><h1>Your best runs</h1><p>These records are calculated automatically from the activities stored in your database.</p></section>
+    <div id="page-status" class="status-message" role="status" hidden></div>
+    <section class="records-grid">
+      <article class="record-card record-primary" data-record="distance"><p>Longest distance</p><strong class="record-value">--</strong><span class="record-detail">Waiting for your first run</span></article>
+      <article class="record-card" data-record="pace"><p>Fastest pace</p><strong class="record-value">--</strong><span class="record-detail">Waiting for your first run</span></article>
+      <article class="record-card" data-record="duration"><p>Longest duration</p><strong class="record-value">--</strong><span class="record-detail">Waiting for your first run</span></article>
+    </section>
+    <aside class="record-note"><span>Small progress is still progress.</span><p>Keep adding your runs and your records will update here.</p></aside>
+  </main>
+
+</body>
+</html>

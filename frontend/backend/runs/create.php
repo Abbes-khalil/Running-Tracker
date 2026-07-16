@@ -1,24 +1,31 @@
 <?php
-include '../config/database.php';
+declare(strict_types=1);
 
-$run_type= $_POST['run_type'];
-$distance_km= $_POST['distance'];
-$average_pace= $_POST['average_pace'];
-$duration= $_POST['duration'];
-$average_heart_rate= $_POST['average_heart_rate'];
-$calories_burned= $_POST['calories_burned'];
-$note= $_POST['note'];
-$run_date= $_POST['run_date'];
+require_once __DIR__ . '/../config/api.php';
+require_method('POST');
+require_once __DIR__ . '/../config/database.php';
 
-if (empty($run_type) || empty($distance_km) || empty($average_pace) || empty($duration) || empty($run_date)) {
-    echo json_encode(['status' => 'error', 'message' => 'All fields are required.']);
-    exit;
-}
-$sql ="INSERT INTO runs (run_type, distance_km, average_pace, duration, average_heart_rate, calories_burned, note, run_date) VALUES ('$run_type', '$distance_km', '$average_pace', '$duration', '$average_heart_rate', '$calories_burned', '$note', '$run_date')";
-$result= mysqli_query($conn, $sql);
-if ($result) {
-    echo json_encode(['status' => 'success', 'message' => 'Run logged successfully.']);
-} else {
-    echo json_encode(['status' => 'error', 'message' => 'Error logging run: ' . mysqli_error($conn)]);
-}
-?>
+[$type, $distance, $duration, $pace, $speed, $heartRate, $notes, $date] = normalize_run(request_data());
+$userId = 1;
+
+// This version is intentionally a single-user local app. Ensure its local profile exists.
+$localPassword = password_hash('local-development-only', PASSWORD_DEFAULT);
+$profile = $conn->prepare(
+    'INSERT IGNORE INTO users (id, full_name, email, password, age, weight, height)
+     VALUES (1, ?, ?, ?, 0, 0, 0)'
+);
+$localName = 'Local Runner';
+$localEmail = 'runner@example.test';
+$profile->bind_param('sss', $localName, $localEmail, $localPassword);
+$profile->execute();
+
+$zero = 0;
+$statement = $conn->prepare(
+    'INSERT INTO runs (user_id, run_type, distance_km, duration_secondes, average_pace, average_speed,
+     average_heart_rate, max_heart_rate, calories, elevation_gain, notes, run_date)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+);
+$statement->bind_param('isdisdiiiiss', $userId, $type, $distance, $duration, $pace, $speed, $heartRate, $zero, $zero, $zero, $notes, $date);
+$statement->execute();
+
+respond(['status' => 'success', 'message' => 'Activity saved.', 'id' => $statement->insert_id], 201);

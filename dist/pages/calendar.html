@@ -1,25 +1,27 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar | RunTracker</title>
-    <link rel="stylesheet" crossorigin href="/assets/base-CwhefAO1.css">
-  </head>
-  <body class="min-h-screen bg-[#050505] font-sans text-white">
-    <nav class="border-b border-[#262626] bg-black">
-      <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-4">
-        <a href="../index.html" class="font-display text-xl font-bold uppercase tracking-[.1em] text-[#ccff00]">RunTracker</a>
-        <div class="flex gap-2 text-sm"><a href="../index.html" class="rounded-md px-3 py-2 text-[#a0a0a0]">Dashboard</a>
-          <a href="activities.html" class="rounded-md px-3 py-2 text-[#a0a0a0]">Activities</a>
-          <a href="calendar.html" class="rounded-md bg-[#1a1a1a] px-3 py-2 text-[#ccff00]">Calendar</a>
-          <a href="pr.html" class="rounded-md px-3 py-2 text-[#a0a0a0]">Records</a>
-        </div>
-      </div>
-    </nav>
-    <main class="mx-auto max-w-5xl p-6">
-      <h1 class="mb-8 font-display text-4xl font-bold">Calendar</h1>
-      <div class="rounded-2xl border border-[#262626] bg-[#121212] p-8 text-center text-[#a0a0a0]">Calendar entries will appear here.</div>
-    </main>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar | RunTracker</title>
+  <link rel="stylesheet" crossorigin href="/assets/base-BawtSieG.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><span class="brand-mark">R</span><span>RunTracker</span></a>
+    <nav class="main-nav" aria-label="Main navigation"><a href="../index.html">Dashboard</a><a href="./activities.html">Activities</a><a class="active" href="./calendar.html">Calendar</a><a href="./pr.html">Records</a></nav>
+    <a class="button button-primary" href="./addMenu.html">+ Add run</a>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-title"><div><p class="eyebrow">Training schedule</p><h1>Run calendar</h1></div><p>See when you trained and how consistent you have been.</p></section>
+    <div id="page-status" class="status-message" role="status" hidden></div>
+    <section class="calendar-panel">
+      <div class="calendar-toolbar"><button id="previous-month" class="icon-button" type="button" aria-label="Previous month">←</button><h2 id="current-month">Month</h2><button id="next-month" class="icon-button" type="button" aria-label="Next month">→</button></div>
+      <div class="calendar-weekdays" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+      <div id="calendar-grid" class="calendar-grid"></div>
+    </section>
+  </main>
+
+</body>
 </html>

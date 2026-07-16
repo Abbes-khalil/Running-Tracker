@@ -1,22 +1,31 @@
 <?php
-include '../config.php';
-$run_id = $_POST['run_id'];
-$run_type= $_POST['run_type'];
-$distance_km= $_POST['distance'];
-$average_pace= $_POST['average_pace'];
-$duration= $_POST['duration'];
-$average_heart_rate= $_POST['average_heart_rate'];
-$calories_burned= $_POST['calories_burned'];
-$note= $_POST['note'];
-if (empty($run_type) || empty($distance_km) || empty($average_pace) || empty($duration)) {
-    echo json_encode(['status' => 'error', 'message' => 'All fields are required.']);
-    exit;
+declare(strict_types=1);
+
+require_once __DIR__ . '/../config/api.php';
+require_method('PUT');
+require_once __DIR__ . '/../config/database.php';
+
+$data = request_data();
+$id = filter_var($data['id'] ?? null, FILTER_VALIDATE_INT);
+if (!$id) {
+    respond(['status' => 'error', 'message' => 'A valid activity ID is required.'], 422);
 }
-$sql= "UPDATE runs SET run_type='$run_type', distance_km='$distance_km', average_pace='$average_pace', duration='$duration', average_heart_rate='$average_heart_rate', calories_burned='$calories_burned', note='$note' WHERE id='$run_id'";
-$result= mysqli_query($conn, $sql);
-if ($result) {
-    echo json_encode(['status' => 'success', 'message' => 'Run updated successfully.']);
-} else {
-    echo json_encode(['status' => 'error', 'message' => 'Error updating run: ' . mysqli_error($conn)]);
+
+[$type, $distance, $duration, $pace, $speed, $heartRate, $notes, $date] = normalize_run($data);
+$statement = $conn->prepare(
+    'UPDATE runs SET run_type = ?, distance_km = ?, duration_secondes = ?, average_pace = ?,
+     average_speed = ?, average_heart_rate = ?, notes = ?, run_date = ? WHERE id = ? AND user_id = 1'
+);
+$statement->bind_param('sdisdissi', $type, $distance, $duration, $pace, $speed, $heartRate, $notes, $date, $id);
+$statement->execute();
+
+if ($statement->affected_rows === 0) {
+    $check = $conn->prepare('SELECT id FROM runs WHERE id = ? AND user_id = 1');
+    $check->bind_param('i', $id);
+    $check->execute();
+    if ($check->get_result()->num_rows === 0) {
+        respond(['status' => 'error', 'message' => 'Activity not found.'], 404);
+    }
 }
-?>
+
+respond(['status' => 'success', 'message' => 'Activity updated.']);

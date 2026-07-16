@@ -1,15 +1,29 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
-import tailwindcss from '@tailwindcss/vite'
+import { cpSync } from 'fs';
 
+function copyBackend() {
+  return {
+    name: 'copy-php-backend',
+    closeBundle() {
+      cpSync(resolve(__dirname, 'frontend/backend'), resolve(__dirname, 'dist/backend'), { recursive: true });
+    },
+  };
+}
 
 export default defineConfig({
   root: resolve(__dirname, 'frontend'),
   plugins: [
-    tailwindcss(),
+    copyBackend(),
   ],
+  server: {
+    proxy: {
+      '/backend': 'http://127.0.0.1:8000',
+    },
+  },
   build: {
     outDir: resolve(__dirname, 'dist'),
+    emptyOutDir: true,
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'frontend/index.html'),

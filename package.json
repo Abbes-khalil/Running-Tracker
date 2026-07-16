@@ -1,12 +1,10 @@
 {
   "scripts": {
     "dev": "vite",
+    "dev:backend": "php -S 127.0.0.1:8000 -t frontend",
     "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.3.2",
-    "tailwindcss": "^4.3.2"
+    "preview": "vite preview",
+    "serve:production": "php -S 127.0.0.1:8080 -t dist"
   },
   "devDependencies": {
     "vite": "^8.1.3"
