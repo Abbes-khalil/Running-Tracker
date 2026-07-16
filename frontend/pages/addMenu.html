@@ -1,86 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Activity - Fit Tracker</title>
+    <title>Add Activity | RunTracker</title>
     <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/add-activity.css">
-</head>
-<body class="page">
-    <nav id="navbar">
-        <h1>Fit Tracker</h1>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="calendar.html">Calendar</a></li>
-            <li><a href="activities.html">Activities</a></li>
-            <li><a href="pr.html">Personal record</a></li>
-        </ul>
+  </head>
+  <body class="min-h-screen bg-[#050505] font-sans text-white">
+    <nav class="border-b border-[#262626] bg-black">
+      <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-4">
+        <a href="../index.html" class="font-display text-xl font-bold uppercase text-[#ccff00]">RunTracker</a>
+        <div class="flex flex-wrap gap-2 text-sm">
+          <a href="../index.html" class="rounded-md px-3 py-2 text-[#a0a0a0] hover:bg-[#1a1a1a] hover:text-white">Dashboard</a>
+          <a href="activities.html" class="rounded-md px-3 py-2 text-[#a0a0a0] hover:bg-[#1a1a1a] hover:text-white">Activities</a>
+          <a href="calendar.html" class="rounded-md px-3 py-2 text-[#a0a0a0] hover:bg-[#1a1a1a] hover:text-white">Calendar</a>
+          <a href="pr.html" class="rounded-md px-3 py-2 text-[#a0a0a0] hover:bg-[#1a1a1a] hover:text-white">Records</a>
+        </div>
+      </div>
     </nav>
-
-    <button id="toggleBtn">☰</button>
-
-    <div class="content-wrapper">
-        <div class="page-header">
-            <h1>Add Manual Activity</h1>
-            <a href="activities.html" class="btn btn-secondary" style="text-decoration: none;">Back to Activities</a>
-        </div>
-
-        <div class="action-card">
-            <form action="" style="width: 100%;">
-                <div class="form-group">
-                    <label for="activity">Activity Name</label>
-                    <input type="text" id="activity" name="activity" value="Running">
-                </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <div class="form-group">
-                        <label for="date">Date</label>
-                        <input type="date" id="date" name="date">
-                    </div>
-                    <div class="form-group">
-                        <label for="time">Time</label>
-                        <input type="time" id="time" name="time">
-                    </div>
-                </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <div class="form-group">
-                        <label for="distance">Distance (km)</label>
-                        <input type="number" id="distance" name="distance" step="0.01">
-                    </div>
-                    <div class="form-group">
-                        <label for="duration">Duration (hh:mm:ss)</label>
-                        <input type="time" id="duration" name="duration" step="1">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="avg-speed">Average Speed (km/h)</label>
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <span id="avg-speed" class="stat-value" style="font-size: 20px;">--</span>
-                        <span class="stat-unit">km/h</span>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="calories">Calories Burned</label>
-                    <input type="number" id="calories" name="calories" step="1">
-                </div>
-
-                <div class="form-group">
-                    <label for="notes">Notes</label>
-                    <textarea id="notes" name="notes" rows="4" placeholder="How did the run feel?"></textarea>
-                </div>
-
-                <div style="display: flex; gap: 12px; margin-top: 32px;">
-                    <button type="submit" class="btn btn-primary" style="flex: 1;" >Save Activity</button>
-                    <button type="reset" class="btn btn-secondary">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <script type="module" src="../assets/js/functions.js"></script>
-</body>
+    <main class="mx-auto max-w-2xl p-6">
+      <section class="rounded-2xl border border-[#262626] bg-[#121212] p-8">
+        <h1 class="font-display text-3xl font-bold">Add New Activity</h1>
+        <form class="mt-8 grid gap-5" action="../backend/runs/create.php" method="post">
+          <input class="rounded-md border border-[#262626] bg-[#1a1a1a] px-4 py-3 text-white" name="activity" placeholder="Activity type" required>
+          <input class="rounded-md border border-[#262626] bg-[#1a1a1a] px-4 py-3 text-white" name="date" type="date" required>
+          <input class="rounded-md border border-[#262626] bg-[#1a1a1a] px-4 py-3 text-white" name="distance" type="number" min="0" step="0.01" placeholder="Distance (km)" required>
+          <textarea class="rounded-md border border-[#262626] bg-[#1a1a1a] px-4 py-3 text-white" name="notes" placeholder="Notes"></textarea>
+          <div class="w-auto">
+          <input type="submit" value="Save Activity" class="w-[45%] rounded-md bg-[#ccff00] px-4 py-3 font-semibold text-black hover:bg-[white] ">
+          <input type="reset" value="reset" class="w-[45%] rounded-md bg-[red] px-4 py-3 font-semibold text-black ml-[50px]  hover:bg-[white]" >
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
 </html>

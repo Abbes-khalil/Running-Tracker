@@ -1,16 +1,13 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
+import tailwindcss from '@tailwindcss/vite'
+
 
 export default defineConfig({
   root: resolve(__dirname, 'frontend'),
-  server: {
-    proxy: {
-      '/auth': {
-        target: 'http://localhost:8000',
-        changeOrigin: true,
-      },
-    },
-  },
+  plugins: [
+    tailwindcss(),
+  ],
   build: {
     outDir: resolve(__dirname, 'dist'),
     rollupOptions: {
@@ -20,8 +17,6 @@ export default defineConfig({
         addMenu: resolve(__dirname, 'frontend/pages/addMenu.html'),
         calendar: resolve(__dirname, 'frontend/pages/calendar.html'),
         pr: resolve(__dirname, 'frontend/pages/pr.html'),
-        login: resolve(__dirname, 'frontend/pages/login.html'),
-        register: resolve(__dirname, 'frontend/pages/register.html'),
       },
     },
   },
