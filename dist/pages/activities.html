@@ -1,92 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Activities - Fit Tracker</title>
-  <script type="module" crossorigin src="/assets/functions-C6ajgOFp.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/activities-BtM-bY1o.css">
-  <link rel="stylesheet" crossorigin href="/assets/base-B3LGHump.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activities | RunTracker</title>
+  <link rel="stylesheet" crossorigin href="/assets/base-BawtSieG.css">
 </head>
-<body class="page">
-    <nav id="navbar">
-        <h1>Fit Tracker</h1>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="calendar.html">Calendar</a></li>
-            <li><a href="activities.html" class="active">Activities</a></li>
-            <li><a href="pr.html">Personal record</a></li>
-        </ul>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><span class="brand-mark">R</span><span>RunTracker</span></a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="../index.html">Dashboard</a><a class="active" href="./activities.html">Activities</a><a href="./calendar.html">Calendar</a><a href="./pr.html">Records</a>
     </nav>
+    <a class="button button-primary" href="./addMenu.html">+ Add run</a>
+  </header>
 
-    <button id="toggleBtn">☰</button>
+  <main class="page-shell">
+    <section class="page-title">
+      <div><p class="eyebrow">Training history</p><h1>Your activities</h1></div>
+      <p>View, edit, or delete the runs saved in the database.</p>
+    </section>
+    <div id="page-status" class="status-message" role="status" hidden></div>
+    <section id="activities-list" class="run-list" aria-live="polite"><div class="loading">Loading activities...</div></section>
+  </main>
 
-    <div class="content-wrapper">
-        <div class="page-header">
-            <h1>Activities</h1>
-            <div class="header-links">
-                <a href="addMenu.html" class="btn btn-primary" style="text-decoration: none; padding: 8px 16px; font-size: 14px;">+ Manual Activity</a>
-                <a href="#" class="btn btn-secondary" style="text-decoration: none; padding: 8px 16px; font-size: 14px; margin-left: 8px;">Export CSV</a>
-            </div>
-        </div>
-
-        <div class="activities-toolbar">
-            <input type="text" class="search-input" placeholder="Search activities...">
-            <button class="filter-btn active">All</button>
-            <button class="filter-btn">Running</button>
-        </div>
-
-        <div class="activity-list">
-            <div class="activity-card">
-                <div class="card-date">Jul 5, 2026</div>
-                <div class="card-title">Morning Run</div>
-                <div class="card-metric">
-                    <span class="metric-label">Distance</span>
-                    <span class="metric-value">5.20 km</span>
-                </div>
-                <div class="card-metric">
-                    <span class="metric-label">Duration</span>
-                    <span class="metric-value">28:15</span>
-                </div>
-                <div class="card-metric">
-                    <span class="metric-label">Avg Pace</span>
-                    <span class="metric-value">5:24 /km</span>
-                </div>
-            </div>
-            <div class="activity-card">
-                <div class="card-date">Jul 3, 2026</div>
-                <div class="card-title">Weekend Long Run</div>
-                <div class="card-metric">
-                    <span class="metric-label">Distance</span>
-                    <span class="metric-value">12.00 km</span>
-                </div>
-                <div class="card-metric">
-                    <span class="metric-label">Duration</span>
-                    <span class="metric-value">1:05:10</span>
-                </div>
-                <div class="card-metric">
-                    <span class="metric-label">Avg Pace</span>
-                    <span class="metric-value">5:26 /km</span>
-                </div>
-            </div>
-            <div class="activity-card">
-                <div class="card-date">Jul 1, 2026</div>
-                <div class="card-title">Recovery Jog</div>
-                <div class="card-metric">
-                    <span class="metric-label">Distance</span>
-                    <span class="metric-value">3.50 km</span>
-                </div>
-                <div class="card-metric">
-                    <span class="metric-label">Duration</span>
-                    <span class="metric-value">21:00</span>
-                </div>
-                <div class="card-metric">
-                    <span class="metric-label">Avg Pace</span>
-                    <span class="metric-value">6:00 /km</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
+  <dialog id="edit-dialog" class="edit-dialog">
+    <form id="edit-form" class="dialog-form">
+      <div class="dialog-heading"><h2>Edit activity</h2><button id="close-dialog" class="icon-button" type="button" aria-label="Close">×</button></div>
+      <input name="id" type="hidden">
+      <div class="form-grid">
+        <label class="field field-wide"><span>Activity type</span><select name="run_type" required><option>Easy run</option><option>Long run</option><option>Tempo run</option><option>Intervals</option><option>Recovery run</option><option>Race</option></select></label>
+        <label class="field"><span>Date</span><input name="run_date" type="date" required></label>
+        <label class="field"><span>Distance <small>km</small></span><input name="distance_km" type="number" min="0.01" step="0.01" required></label>
+        <label class="field"><span>Duration</span><input name="duration" type="time" step="1" required></label>
+        <label class="field"><span>Average heart rate <small>optional</small></span><input name="average_heart_rate" type="number" min="30" max="250"></label>
+        <label class="field field-wide"><span>Notes <small>optional</small></span><textarea name="notes" rows="3" maxlength="2000"></textarea></label>
+      </div>
+      <div class="status-message" role="alert" hidden></div>
+      <div class="form-actions"><button class="button button-primary" type="submit">Save changes</button><button class="button button-quiet" id="cancel-dialog" type="button">Cancel</button></div>
+    </form>
+  </dialog>
 </body>
 </html>

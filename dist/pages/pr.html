@@ -1,38 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Records - Fit Tracker</title>
-  <script type="module" crossorigin src="/assets/functions-C6ajgOFp.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/pr-CPzE_wNJ.css">
-  <link rel="stylesheet" crossorigin href="/assets/base-B3LGHump.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Records | RunTracker</title>
+  <script type="module" crossorigin src="/assets/pr-BfiAuz52.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/base-BawtSieG.css">
 </head>
-<body class="page">
-    <nav id="navbar">
-        <h1>Fit Tracker</h1>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="calendar.html">Calendar</a></li>
-            <li><a href="activities.html">Activities</a></li>
-            <li><a href="pr.html" class="active">Personal record</a></li>
-        </ul>
-    </nav>
-    <button id="toggleBtn">☰</button>
-    <div class="pr-container">
-        <div class="pr-card">
-            <div class="pr-label">Distance</div>
-            <div class="pr-value">--</div>
-        </div>
-        <div class="pr-card">
-            <div class="pr-label">Duration</div>
-            <div class="pr-value">--</div>
-        </div>
-        <div class="pr-card">
-            <div class="pr-label">AVG Pace</div>
-            <div class="pr-value">--</div>
-        </div>
-    </div>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><span class="brand-mark">R</span><span>RunTracker</span></a>
+    <nav class="main-nav" aria-label="Main navigation"><a href="../index.html">Dashboard</a><a href="./activities.html">Activities</a><a href="./calendar.html">Calendar</a><a class="active" href="./pr.html">Records</a></nav>
+    <a class="button button-primary" href="./addMenu.html">+ Add run</a>
+  </header>
+
+  <main class="page-shell">
+    <section class="records-hero"><p class="eyebrow">Personal bests</p><h1>Your best runs</h1><p>These records are calculated automatically from the activities stored in your database.</p></section>
+    <div id="page-status" class="status-message" role="status" hidden></div>
+    <section class="records-grid">
+      <article class="record-card record-primary" data-record="distance"><p>Longest distance</p><strong class="record-value">--</strong><span class="record-detail">Waiting for your first run</span></article>
+      <article class="record-card" data-record="pace"><p>Fastest pace</p><strong class="record-value">--</strong><span class="record-detail">Waiting for your first run</span></article>
+      <article class="record-card" data-record="duration"><p>Longest duration</p><strong class="record-value">--</strong><span class="record-detail">Waiting for your first run</span></article>
+    </section>
+    <aside class="record-note"><span>Small progress is still progress.</span><p>Keep adding your runs and your records will update here.</p></aside>
+  </main>
 
 </body>
 </html>

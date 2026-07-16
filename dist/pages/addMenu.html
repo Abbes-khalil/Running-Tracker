@@ -1,86 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Activity - Fit Tracker</title>
-  <script type="module" crossorigin src="/assets/functions-C6ajgOFp.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/addMenu-BwXYcbOl.css">
-  <link rel="stylesheet" crossorigin href="/assets/base-B3LGHump.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add a run | RunTracker</title>
+  <link rel="stylesheet" crossorigin href="/assets/base-BawtSieG.css">
 </head>
-<body class="page">
-    <nav id="navbar">
-        <h1>Fit Tracker</h1>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="calendar.html">Calendar</a></li>
-            <li><a href="activities.html">Activities</a></li>
-            <li><a href="pr.html">Personal record</a></li>
-        </ul>
-    </nav>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><span class="brand-mark">R</span><span>RunTracker</span></a>
+    <nav class="main-nav" aria-label="Main navigation"><a href="../index.html">Dashboard</a><a href="./activities.html">Activities</a><a href="./calendar.html">Calendar</a><a href="./pr.html">Records</a></nav>
+    <a class="button button-quiet" href="./activities.html">Cancel</a>
+  </header>
 
-    <button id="toggleBtn">☰</button>
-
-    <div class="content-wrapper">
-        <div class="page-header">
-            <h1>Add Manual Activity</h1>
-            <a href="activities.html" class="btn btn-secondary" style="text-decoration: none;">Back to Activities</a>
-        </div>
-
-        <div class="action-card">
-            <form action="" style="width: 100%;">
-                <div class="form-group">
-                    <label for="activity">Activity Name</label>
-                    <input type="text" id="activity" name="activity" value="Running">
-                </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <div class="form-group">
-                        <label for="date">Date</label>
-                        <input type="date" id="date" name="date">
-                    </div>
-                    <div class="form-group">
-                        <label for="time">Time</label>
-                        <input type="time" id="time" name="time">
-                    </div>
-                </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <div class="form-group">
-                        <label for="distance">Distance (km)</label>
-                        <input type="number" id="distance" name="distance" step="0.01">
-                    </div>
-                    <div class="form-group">
-                        <label for="duration">Duration (hh:mm:ss)</label>
-                        <input type="time" id="duration" name="duration" step="1">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="avg-speed">Average Speed (km/h)</label>
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <span id="avg-speed" class="stat-value" style="font-size: 20px;">--</span>
-                        <span class="stat-unit">km/h</span>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="calories">Calories Burned</label>
-                    <input type="number" id="calories" name="calories" step="1">
-                </div>
-
-                <div class="form-group">
-                    <label for="notes">Notes</label>
-                    <textarea id="notes" name="notes" rows="4" placeholder="How did the run feel?"></textarea>
-                </div>
-
-                <div style="display: flex; gap: 12px; margin-top: 32px;">
-                    <button type="submit" class="btn btn-primary" style="flex: 1;" >Save Activity</button>
-                    <button type="reset" class="btn btn-secondary">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
+  <main class="page-shell narrow-shell">
+    <section class="form-intro"><p class="eyebrow">New activity</p><h1>Add a run</h1><p>Enter the main details. Pace and speed will be calculated automatically.</p></section>
+    <form id="run-form" class="run-form">
+      <div class="form-grid">
+        <label class="field field-wide"><span>Activity type</span><select name="run_type" required><option value="">Choose a run</option><option>Easy run</option><option>Long run</option><option>Tempo run</option><option>Intervals</option><option>Recovery run</option><option>Race</option></select></label>
+        <label class="field"><span>Date</span><input name="run_date" type="date" required></label>
+        <label class="field"><span>Distance <small>km</small></span><input id="distance" name="distance_km" type="number" min="0.01" max="9999" step="0.01" placeholder="5.00" required></label>
+        <label class="field"><span>Duration <small>hh:mm:ss</small></span><input id="duration" name="duration" type="time" step="1" required></label>
+        <div class="pace-preview"><span>Estimated pace</span><strong id="pace-preview">--</strong></div>
+        <label class="field"><span>Average heart rate <small>optional</small></span><input name="average_heart_rate" type="number" min="30" max="250" placeholder="145"></label>
+        <label class="field field-wide"><span>Notes <small>optional</small></span><textarea name="notes" rows="4" maxlength="2000" placeholder="How did the run feel?"></textarea></label>
+      </div>
+      <div id="form-status" class="status-message" role="alert" hidden></div>
+      <div class="form-actions"><button class="button button-primary" type="submit">Save activity</button><button class="button button-quiet" type="reset">Clear form</button></div>
+    </form>
+  </main>
 
 </body>
 </html>

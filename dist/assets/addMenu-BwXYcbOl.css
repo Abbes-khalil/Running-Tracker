@@ -1,1 +1,0 @@
-.add-activity-form{width:100%}.form-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;display:grid}.form-actions{gap:12px;margin-top:32px;display:flex}.form-actions .btn{flex:1}@media (width<=768px){.form-row{grid-template-columns:1fr}}

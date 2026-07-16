@@ -1,47 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar - Fit Tracker</title>
-  <script type="module" crossorigin src="/assets/calendar-ySddTuAM.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/functions-C6ajgOFp.js">
-  <link rel="stylesheet" crossorigin href="/assets/calendar-doPG6K1f.css">
-  <link rel="stylesheet" crossorigin href="/assets/base-B3LGHump.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar | RunTracker</title>
+  <link rel="stylesheet" crossorigin href="/assets/base-BawtSieG.css">
 </head>
-<body class="page">
-    <nav id="navbar">
-        <h1>Fit Tracker</h1>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="calendar.html" class="active">Calendar</a></li>
-            <li><a href="activities.html">Activities</a></li>
-            <li><a href="pr.html">Personal record</a></li>
-        </ul>
-    </nav>
-    <button id="toggleBtn">☰</button>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><span class="brand-mark">R</span><span>RunTracker</span></a>
+    <nav class="main-nav" aria-label="Main navigation"><a href="../index.html">Dashboard</a><a href="./activities.html">Activities</a><a class="active" href="./calendar.html">Calendar</a><a href="./pr.html">Records</a></nav>
+    <a class="button button-primary" href="./addMenu.html">+ Add run</a>
+  </header>
 
-    <div class="calendar-container">
-        <div class="calendar-header">
-            <button class="calendar-nav-btn">‹</button>
-            <h2 id="currentMonth"></h2>
-            <button class="calendar-nav-btn">›</button>
-        </div>
-
-        <div class="calendar-weekdays">
-            <div class="weekday">Sun</div>
-            <div class="weekday">Mon</div>
-            <div class="weekday">Tue</div>
-            <div class="weekday">Wed</div>
-            <div class="weekday">Thu</div>
-            <div class="weekday">Fri</div>
-            <div class="weekday">Sat</div>
-        </div>
-
-        <div class="calendar-grid" id="calendarGrid">
-            <!-- Calendar days will be populated by JavaScript -->
-        </div>
-    </div>
+  <main class="page-shell">
+    <section class="page-title"><div><p class="eyebrow">Training schedule</p><h1>Run calendar</h1></div><p>See when you trained and how consistent you have been.</p></section>
+    <div id="page-status" class="status-message" role="status" hidden></div>
+    <section class="calendar-panel">
+      <div class="calendar-toolbar"><button id="previous-month" class="icon-button" type="button" aria-label="Previous month">←</button><h2 id="current-month">Month</h2><button id="next-month" class="icon-button" type="button" aria-label="Next month">→</button></div>
+      <div class="calendar-weekdays" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+      <div id="calendar-grid" class="calendar-grid"></div>
+    </section>
+  </main>
 
 </body>
 </html>
