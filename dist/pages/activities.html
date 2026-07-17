@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Activities | RunTracker</title>
-  <link rel="stylesheet" crossorigin href="/assets/base-BawtSieG.css">
+  <script type="module" crossorigin src="/assets/modulepreload-polyfill-Dezn_h7o.js"></script>
+  <script type="module" crossorigin src="assets/js/recent._activity.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/base-CFtUY2sX.css">
 </head>
 <body>
   <header class="site-header">
@@ -32,7 +34,7 @@
         <label class="field field-wide"><span>Activity type</span><select name="run_type" required><option>Easy run</option><option>Long run</option><option>Tempo run</option><option>Intervals</option><option>Recovery run</option><option>Race</option></select></label>
         <label class="field"><span>Date</span><input name="run_date" type="date" required></label>
         <label class="field"><span>Distance <small>km</small></span><input name="distance_km" type="number" min="0.01" step="0.01" required></label>
-        <label class="field"><span>Duration</span><input name="duration" type="time" step="1" required></label>
+        <label class="field"><span>Duration</span><input name="duration" id="duration" type="time" step="1" required></label>
         <label class="field"><span>Average heart rate <small>optional</small></span><input name="average_heart_rate" type="number" min="30" max="250"></label>
         <label class="field field-wide"><span>Notes <small>optional</small></span><textarea name="notes" rows="3" maxlength="2000"></textarea></label>
       </div>
@@ -40,5 +42,6 @@
       <div class="form-actions"><button class="button button-primary" type="submit">Save changes</button><button class="button button-quiet" id="cancel-dialog" type="button">Cancel</button></div>
     </form>
   </dialog>
+
 </body>
 </html>

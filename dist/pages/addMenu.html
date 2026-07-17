@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add a run | RunTracker</title>
-  <link rel="stylesheet" crossorigin href="/assets/base-BawtSieG.css">
+  <script src="../assets/js/pace.js"></script>
+  <script type="module" crossorigin src="/assets/modulepreload-polyfill-Dezn_h7o.js"></script>
+  <script type="module" crossorigin src="assets/js/pace.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/base-CFtUY2sX.css">
 </head>
 <body>
   <header class="site-header">
@@ -17,10 +20,10 @@
     <section class="form-intro"><p class="eyebrow">New activity</p><h1>Add a run</h1><p>Enter the main details. Pace and speed will be calculated automatically.</p></section>
     <form id="run-form" class="run-form">
       <div class="form-grid">
-        <label class="field field-wide"><span>Activity type</span><select name="run_type" required><option value="">Choose a run</option><option>Easy run</option><option>Long run</option><option>Tempo run</option><option>Intervals</option><option>Recovery run</option><option>Race</option></select></label>
-        <label class="field"><span>Date</span><input name="run_date" type="date" required></label>
-        <label class="field"><span>Distance <small>km</small></span><input id="distance" name="distance_km" type="number" min="0.01" max="9999" step="0.01" placeholder="5.00" required></label>
-        <label class="field"><span>Duration <small>hh:mm:ss</small></span><input id="duration" name="duration" type="time" step="1" required></label>
+        <label class="field field-wide"><span>Activity type</span><select name="run_type" id="run_type" required><option value="">Choose a run</option><option value="Easy run">Easy run</option><option value="Long run">Long run</option><option value="Tempo run">Tempo run</option><option value="Intervals">Intervals</option><option value="Recovery run">Recovery run</option><option value="Race">Race</option></select></label>
+        <label class="field"><span>Date</span><input name="run_date" id="run_date" type="date" required></label>
+        <label class="field"><span>Distance <small>km</small></span><input id="distance_km" name="distance_km" type="number" min="0.01" max="9999" step="0.01" placeholder="5.00" required onchange="calculate()"></label>
+        <label class="field"><span>Duration <small>hh:mm:ss</small></span><input id="duration" name="duration" type="time"  required onchange="calculate()"></label>
         <div class="pace-preview"><span>Estimated pace</span><strong id="pace-preview">--</strong></div>
         <label class="field"><span>Average heart rate <small>optional</small></span><input name="average_heart_rate" type="number" min="30" max="250" placeholder="145"></label>
         <label class="field field-wide"><span>Notes <small>optional</small></span><textarea name="notes" rows="4" maxlength="2000" placeholder="How did the run feel?"></textarea></label>

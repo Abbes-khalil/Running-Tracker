@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "vite",
+    "dev": "node scripts/dev.mjs",
     "dev:backend": "php -S 127.0.0.1:8000 -t frontend",
     "build": "vite build",
     "preview": "vite preview",
