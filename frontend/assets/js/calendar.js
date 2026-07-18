@@ -54,9 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     grid.innerHTML = html;
-
-    // Call the function from calendardata.js
-    loadRuns(month, year);
+    loadCalendarRuns(month, year);
   }
 
   prevButton.onclick = function () {

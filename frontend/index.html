@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +33,7 @@
     <section class="stats-grid" aria-label="Running summary">
       <article class="stat-card stat-featured"><p>Total distance</p><strong><span id="total-distance">--</span> <small>km</small></strong></article>
       <article class="stat-card"><p>Time running</p><strong id="total-time">--</strong></article>
-      <article class="stat-card"><p>Average pace</p><strong><span id="average-pace">--</span> <small>/km</small></strong></article>
+      <article class="stat-card"><p>Average pace</p><strong><span id="average-pace">--</span> <small>Min/km</small></strong></article>
       <article class="stat-card"><p>Total runs</p><strong id="workout-count">--</strong></article>
     </section>
 
@@ -42,7 +42,9 @@
         <div><p class="eyebrow">Latest activity</p><h2>Recent runs</h2></div>
         <a class="text-link" href="./pages/activities.html">View all runs →</a>
       </div>
+      <section id="recnet_run">
       <div id="recent-runs" class="activity-list" aria-live="polite"><div class="loading">Loading runs...</div></div>
+      </section>
     </section>
   </main>
 

@@ -1,64 +1,85 @@
 document.addEventListener("DOMContentLoaded", function () {
-  var grid = document.getElementById("calendar-grid");
-  var title = document.getElementById("current-month");
-  var prevButton = document.getElementById("previous-month");
-  var nextButton = document.getElementById("next-month");
+  const grid = document.getElementById("calendar-grid");
+  const title = document.getElementById("current-month");
+  const prevButton = document.getElementById("previous-month");
+  const nextButton = document.getElementById("next-month");
 
-  if (!grid || !title || !prevButton || !nextButton) {
-    return;
-  }
+  if (!grid || !title || !prevButton || !nextButton) return;
 
-  var monthNames = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
 
-  var today = new Date();
-  var currentMonth = today.getMonth();
-  var currentYear = today.getFullYear();
+  const today = new Date();
+
+  window.currentMonth = today.getMonth();
+  window.currentYear = today.getFullYear();
 
   function renderCalendar(month, year) {
-    var firstDay = new Date(year, month, 1).getDay();
-    var daysInMonth = new Date(year, month + 1, 0).getDate();
-    var html = "";
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    let html = "";
 
     title.textContent = monthNames[month] + " " + year;
 
-    for (var i = 0; i < firstDay; i++) {
-      html += "<div class='calendar-cell muted'></div>";
+    for (let i = 0; i < firstDay; i++) {
+      html += `<div class="calendar-cell muted"></div>`;
     }
 
-    for (var day = 1; day <= daysInMonth; day++) {
-      var isToday =
+    for (let day = 1; day <= daysInMonth; day++) {
+      const isToday =
         day === today.getDate() &&
         month === today.getMonth() &&
         year === today.getFullYear();
 
-      html += "<div class='calendar-cell" + (isToday ? " today" : "") + "'>";
-      html += "<div class='day-number'>" + day + "</div>";
-      html += "</div>";
+      html += `
+        <div class="calendar-cell ${isToday ? "today" : ""}">
+            <div class="day-number">${day}</div>
+
+            <div class="day-events" data-day="${day}"></div>
+        </div>
+      `;
     }
 
     grid.innerHTML = html;
+
+    // Call the function from calendardata.js
+    loadRuns(month, year);
   }
 
   prevButton.onclick = function () {
-    currentMonth--;
-    if (currentMonth < 0) {
-      currentMonth = 11;
-      currentYear--;
+    window.currentMonth--;
+
+    if (window.currentMonth < 0) {
+      window.currentMonth = 11;
+      window.currentYear--;
     }
-    renderCalendar(currentMonth, currentYear);
+
+    renderCalendar(window.currentMonth, window.currentYear);
   };
 
   nextButton.onclick = function () {
-    currentMonth++;
-    if (currentMonth > 11) {
-      currentMonth = 0;
-      currentYear++;
+    window.currentMonth++;
+
+    if (window.currentMonth > 11) {
+      window.currentMonth = 0;
+      window.currentYear++;
     }
-    renderCalendar(currentMonth, currentYear);
+
+    renderCalendar(window.currentMonth, window.currentYear);
   };
 
-  renderCalendar(currentMonth, currentYear);
+  renderCalendar(window.currentMonth, window.currentYear);
 });
