@@ -188,7 +188,7 @@ This starts a PHP server at `http://127.0.0.1:8080`.
 
 ## Author
 
-Created by **[Your Name]**.
+Created by Khalil Abbes.
 
 Replace the placeholder above with the project author’s name and profile link before publishing the repository.
 
