@@ -14,15 +14,27 @@
   </header>
 
   <main class="page-shell">
+    
     <section class="records-hero"><p class="eyebrow">Personal bests</p><h1>Your best runs</h1><p>These records are calculated automatically from the activities stored in your database.</p></section>
     <div id="page-status" class="status-message" role="status" hidden></div>
+    <div class="records-selector">
+      <label for="pr-distance">Select distance</label>
+      <select name="pr-distance" id="pr-distance">
+        <option value="1">1km</option>
+        <option value="5">5km</option>
+        <option value="10">10km</option>
+        <option value="21">Half Marathon</option>
+        <option value="42">Marathon</option>
+      </select>
+    </div>
     <section class="records-grid">
-      <article class="record-card record-primary" data-record="distance"><p>Longest distance</p><strong class="record-value">--</strong><span class="record-detail">Waiting for your first run</span></article>
-      <article class="record-card" data-record="pace"><p>Fastest pace</p><strong class="record-value">--</strong><span class="record-detail">Waiting for your first run</span></article>
-      <article class="record-card" data-record="duration"><p>Longest duration</p><strong class="record-value">--</strong><span class="record-detail">Waiting for your first run</span></article>
+      <article class="record-card record-primary" data-record="distance"><p>distance</p><strong class="record-value" id="distance">--</strong><span class="record-detail">Waiting for your first run</span></article>
+      <article class="record-card" data-record="pace"><p>pace</p><strong class="record-value" id="pace">--</strong><span class="record-detail">Waiting for your first run</span></article>
+      <article class="record-card" data-record="duration"><p>duration</p><strong class="record-value" id="duration">--</strong><span class="record-detail">Waiting for your first run</span></article>
     </section>
     <aside class="record-note"><span>Small progress is still progress.</span><p>Keep adding your runs and your records will update here.</p></aside>
   </main>
 
+  <script type="module" src="../assets/js/personal_records.js"></script>
 </body>
 </html>

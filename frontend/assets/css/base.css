@@ -420,6 +420,49 @@ h2 {
   margin-top: 22px;
 }
 
+/* Specific styling for the distance selector in personal records page */
+#pr-distance {
+  width: 100%;
+  max-width: 200px;
+  margin: 16px 0;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2366768a' stroke-width='1.2' fill='none'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 10px 6px;
+}
+
+#pr-distance:focus {
+  border-color: var(--green);
+  outline: 2px solid var(--green-light);
+  outline-offset: 2px;
+}
+
+#pr-distance option {
+  padding: 8px;
+}
+
+/* Style for the records container */
+.records-selector {
+  margin: 24px 0;
+  text-align: center;
+}
+
+.records-selector label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--navy);
+  font-weight: 600;
+  font-size: 16px;
+}
+
 .status-message {
   margin: 16px 0;
   padding: 12px 14px;
@@ -709,6 +752,37 @@ h2 {
     align-items: start;
     flex-direction: column;
   }
+}
+
+/* Records selector styles */
+.records-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 24px 0;
+}
+
+.records-selector label {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 14px;
+}
+
+.records-selector select {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #bdc8d1;
+  border-radius: 8px;
+  background: white;
+  color: var(--text);
+  font: inherit;
+}
+
+.records-selector select:focus-visible {
+  outline: 3px solid #9bcdbb;
+  outline-offset: 2px;
+  border-color: #9bcdbb;
 }
 
 /* Activity card styles for recent-activity.js */
